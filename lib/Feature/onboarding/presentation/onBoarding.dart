@@ -14,7 +14,7 @@ class BoardingView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<HomeCubit, HomeStates>(
       builder: (context, state) =>
-          const Scaffold(resizeToAvoidBottomInset: true, body: BoardingBody()),
+          const Scaffold(resizeToAvoidBottomInset: false, body: BoardingBody()),
       listener: (context, state) => {},
     );
   }

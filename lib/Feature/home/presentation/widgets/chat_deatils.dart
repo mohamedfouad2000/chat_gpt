@@ -25,8 +25,10 @@ class ChatDetails extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        const Image(
-                          image: AssetImage(AssetsData.fram4Icon),
+                        Image(
+                          image: AssetImage(HomeCubit.get(context).islight
+                              ? AssetsData.fram4Iconblack
+                              : AssetsData.fram4Icon),
                           height: 20,
                           width: 20,
                         ),
@@ -42,7 +44,9 @@ class ChatDetails extends StatelessWidget {
                                     .copyWith(fontWeight: FontWeight.w500))),
                         PopupMenuButton(
                           padding: EdgeInsets.zero,
-                          color: kBackGroundColor,
+                          color: HomeCubit.get(context).islight
+                              ? Colors.white
+                              : kBackGroundColor,
                           itemBuilder: (context) => [
                             PopupMenuItem(
                                 onTap: () {
@@ -53,17 +57,20 @@ class ChatDetails extends StatelessWidget {
                                         indexOfModel: index,
                                       ));
                                 },
-                                child: const Row(
+                                child: Row(
                                   children: [
                                     Image(
-                                      image: AssetImage(AssetsData.editIcon),
+                                      image: AssetImage(
+                                          HomeCubit.get(context).islight
+                                              ? AssetsData.editIconblack
+                                              : AssetsData.editIcon),
                                       width: 16,
                                       height: 16,
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 12,
                                     ),
-                                    Text("edit")
+                                    const Text("edit")
                                   ],
                                 )),
                             PopupMenuItem(

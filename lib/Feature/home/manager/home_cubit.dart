@@ -7,6 +7,12 @@ import 'package:chat_gpt/core/remote/dio_helper.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeCubit extends Cubit<HomeStates> {
+  bool islight = false;
+  void changeTheme() {
+    islight = !islight;
+    emit(ChangeThemeState());
+  }
+
   HomeCubit() : super(InitState());
   GptModel? model;
   static HomeCubit get(context) => BlocProvider.of(context);

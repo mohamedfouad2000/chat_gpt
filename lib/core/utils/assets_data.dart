@@ -18,4 +18,16 @@ class AssetsData {
   static const deletIcon = 'assets/images/del.png';
   static const editIcon = 'assets/images/edit.png';
   static const regenerateIcon = 'assets/images/Frame (6).png';
+  static const chatIconBlack = 'assets/images/download.png';
+  static const iconT2black = 'assets/images/t2dark.png';
+  static const iconT3black = 'assets/images/t3dark.png';
+  static const iconT1black = 'assets/images/t1dark.png';
+  static const iconT4black = 'assets/images/t4dark.png';
+  static const editIconblack = 'assets/images/editdark.png';
+  static const iconT5Black = 'assets/images/t5dark.png';
+  static const vectorBlack = 'assets/images/Vectordark.jpg';
+  static const fram4Iconblack = 'assets/images/framedark4.png';
+  static const unLikeIconblack = 'assets/images/Frame dark (2).png';
+  static const likeIconblack = 'assets/images/Frame dark (3).png';
+  static const copyIconblack = 'assets/images/Group black 3.png';
 }

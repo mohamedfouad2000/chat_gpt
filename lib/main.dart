@@ -3,8 +3,8 @@ import 'package:chat_gpt/Feature/home/manager/home_states.dart';
 import 'package:chat_gpt/Feature/splash/presentation/splash.dart';
 import 'package:chat_gpt/core/blocobserve.dart';
 import 'package:chat_gpt/core/remote/dio_helper.dart';
-import 'package:chat_gpt/core/utils/colors.dart';
 import 'package:chat_gpt/core/utils/size_config.dart';
+import 'package:chat_gpt/core/utils/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -30,12 +30,7 @@ class MyApp extends StatelessWidget {
         builder: (context, state) => MaterialApp(
           title: 'ChatGpt',
           debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-              fontFamily: 'Raleway',
-              scaffoldBackgroundColor: kBackGroundColor,
-              useMaterial3: true,
-              colorScheme: ColorScheme.dark(
-                  background: kMainColor, onPrimary: Colors.white)),
+          theme: HomeCubit.get(context).islight ? lightTheme : darkTheme,
           home: const splashView(),
         ),
         listener: (context, state) => {},

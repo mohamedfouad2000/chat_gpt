@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:chat_gpt/Feature/home/manager/home_cubit.dart';
 import 'package:chat_gpt/Feature/home/manager/home_states.dart';
 import 'package:chat_gpt/Feature/home/presentation/widgets/question_body.dart';
+import 'package:chat_gpt/core/utils/colors.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -55,10 +56,11 @@ class QuestionsPage extends StatelessWidget {
     return BlocConsumer<HomeCubit, HomeStates>(
       builder: (BuildContext context, state) {
         return Scaffold(
-            // backgroundColor: const Color(0xff202123),
+            backgroundColor:
+                HomeCubit.get(context).islight ? Colors.white : kChatColor,
             body: QuestionBody(
-          question: finshList,
-        ));
+              question: finshList,
+            ));
       },
       listener: (BuildContext context, Object? state) {},
     );

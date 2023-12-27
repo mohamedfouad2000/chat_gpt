@@ -18,14 +18,20 @@ class CustomSenButton extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.all(8.0),
           decoration: BoxDecoration(
-              color: kConverColor,
-              border: Border.all(color: Colors.white.withOpacity(.2)),
+              color:
+                  HomeCubit.get(context).islight ? Colors.white : kConverColor,
+              border: Border.all(
+                  color: HomeCubit.get(context).islight
+                      ? Colors.black.withOpacity(.2)
+                      : Colors.white.withOpacity(.2)),
               borderRadius: BorderRadius.circular(10)),
           child: Row(
             children: [
               Expanded(
                   child: customTextFormedFiled(
                 controller: msqCont,
+                cursorColor:
+                    HomeCubit.get(context).islight ? Colors.teal : Colors.white,
               )),
               InkWell(
                 onTap: () {

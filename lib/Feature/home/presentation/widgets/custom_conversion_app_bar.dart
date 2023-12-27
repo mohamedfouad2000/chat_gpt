@@ -1,6 +1,8 @@
 import 'package:chat_gpt/Feature/home/manager/home_cubit.dart';
 import 'package:chat_gpt/Feature/home/manager/home_states.dart';
+import 'package:chat_gpt/Feature/home/presentation/home_page.dart';
 import 'package:chat_gpt/core/utils/assets_data.dart';
+import 'package:chat_gpt/core/utils/components.dart';
 import 'package:chat_gpt/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,7 +32,7 @@ class CustoomConverstionAppBar extends StatelessWidget {
                           HomeCubit.get(context)
                               .addNewChat(index: indexOfModel)
                               .then((value) {
-                            Navigator.pop(context, true);
+                            Nav(context, const HomePage());
                           });
                         }
                       },
@@ -45,8 +47,10 @@ class CustoomConverstionAppBar extends StatelessWidget {
                     ),
                     const Expanded(
                         child: Text("Back", style: StylesData.titleStyle)),
-                    const Image(
-                      image: AssetImage(AssetsData.vector),
+                    Image(
+                      image: AssetImage(HomeCubit.get(context).islight
+                          ? AssetsData.vectorBlack
+                          : AssetsData.vector),
                       height: 20,
                       width: 20,
                     ),
@@ -56,7 +60,9 @@ class CustoomConverstionAppBar extends StatelessWidget {
               Container(
                 width: double.infinity,
                 height: 1,
-                color: Colors.white.withOpacity(.4),
+                color: HomeCubit.get(context).islight
+                    ? Colors.black.withOpacity(.4)
+                    : Colors.white.withOpacity(.4),
               ),
             ],
           ),

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:chat_gpt/Feature/home/manager/home_cubit.dart';
 import 'package:chat_gpt/Feature/home/manager/home_states.dart';
 import 'package:chat_gpt/Feature/home/presentation/screens/question_page.dart';
@@ -23,8 +25,8 @@ class ListItem extends StatelessWidget {
                 onTap: () {
                   HomeCubit.get(context).clearConversation().then((value) {});
                 },
-                child: const ListTile(
-                  title: Text(
+                child: ListTile(
+                  title: const Text(
                     "Clear conversations",
                     style: StylesData.listTitleText,
                   ),
@@ -32,7 +34,9 @@ class ListItem extends StatelessWidget {
                     height: 20,
                     width: 20,
                     image: AssetImage(
-                      AssetsData.iconT1,
+                      HomeCubit.get(context).islight
+                          ? AssetsData.iconT1black
+                          : AssetsData.iconT1,
                     ),
                   ),
                 ),
@@ -63,37 +67,43 @@ class ListItem extends StatelessWidget {
                       )
                     ],
                   ),
-                  leading: const Image(
-                    height: 20,
-                    width: 20,
-                    image: AssetImage(
-                      AssetsData.iconT2,
-                    ),
-                  ),
-                ),
-              ),
-              InkWell(
-                onTap: () {},
-                child: const ListTile(
-                  title: Text(
-                    "Light mode",
-                    style: StylesData.listTitleText,
-                  ),
                   leading: Image(
                     height: 20,
                     width: 20,
                     image: AssetImage(
-                      AssetsData.iconT3,
+                      HomeCubit.get(context).islight
+                          ? AssetsData.iconT2black
+                          : AssetsData.iconT2,
                     ),
                   ),
                 ),
               ),
               InkWell(
                 onTap: () {
-                  Nav(context, const QuestionsPage());
+                  HomeCubit.get(context).changeTheme();
                 },
-                child: const ListTile(
+                child: ListTile(
                   title: Text(
+                    HomeCubit.get(context).islight ? "Dark mode" : "Light mode",
+                    style: StylesData.listTitleText,
+                  ),
+                  leading: Image(
+                    height: 20,
+                    width: 20,
+                    image: AssetImage(
+                      HomeCubit.get(context).islight
+                          ? AssetsData.iconT3black
+                          : AssetsData.iconT3,
+                    ),
+                  ),
+                ),
+              ),
+              InkWell(
+                onTap: () {
+                  NavegatorPush(context, const QuestionsPage());
+                },
+                child: ListTile(
+                  title: const Text(
                     "Updates & FAQ",
                     style: StylesData.listTitleText,
                   ),
@@ -101,24 +111,30 @@ class ListItem extends StatelessWidget {
                     height: 20,
                     width: 20,
                     image: AssetImage(
-                      AssetsData.iconT4,
+                      HomeCubit.get(context).islight
+                          ? AssetsData.iconT4black
+                          : AssetsData.iconT4,
                     ),
                   ),
                 ),
               ),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  exit(0);
+                },
                 child: ListTile(
                   title: Text(
                     "Logout",
                     style:
                         StylesData.listTitleText.copyWith(color: kLogoutColor),
                   ),
-                  leading: const Image(
+                  leading: Image(
                     height: 20,
                     width: 20,
                     image: AssetImage(
-                      AssetsData.iconT5,
+                      HomeCubit.get(context).islight
+                          ? AssetsData.iconT5Black
+                          : AssetsData.iconT5,
                     ),
                   ),
                 ),

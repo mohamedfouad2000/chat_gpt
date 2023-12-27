@@ -17,24 +17,30 @@ class OptionList extends StatelessWidget {
       builder: (BuildContext context, state) {
         return Row(
           children: [
-            const Image(
-              image: AssetImage(AssetsData.likeIcon),
+            Image(
+              image: AssetImage(HomeCubit.get(context).islight
+                  ? AssetsData.likeIconblack
+                  : AssetsData.likeIcon),
               height: 20,
               width: 20,
             ),
             const SizedBox(
               width: 16,
             ),
-            const Image(
-              image: AssetImage(AssetsData.unLikeIcon),
+            Image(
+              image: AssetImage(HomeCubit.get(context).islight
+                  ? AssetsData.unLikeIconblack
+                  : AssetsData.unLikeIcon),
               height: 20,
               width: 20,
             ),
             const SizedBox(
               width: 40,
             ),
-            const Image(
-              image: AssetImage(AssetsData.copyIcon),
+            Image(
+              image: AssetImage(HomeCubit.get(context).islight
+                  ? AssetsData.copyIconblack
+                  : AssetsData.copyIcon),
               height: 12,
               width: 12,
             ),

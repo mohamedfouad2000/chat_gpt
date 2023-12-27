@@ -8,13 +8,15 @@ abstract class StylesData {
     fontWeight: FontWeight.w700,
   );
 
-  static const titleStyle =
-      TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: Colors.white);
+  static const titleStyle = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w700,
+  );
 
   static const buttonText =
-      TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w700);
+      TextStyle(fontSize: 18, fontWeight: FontWeight.w700);
   static const listTitleText =
-      TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w500);
+      TextStyle(fontSize: 16, fontWeight: FontWeight.w500);
 
   static TextStyle containerStyle =
       TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: knewColor);

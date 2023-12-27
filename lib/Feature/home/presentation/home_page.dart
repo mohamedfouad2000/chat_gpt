@@ -3,6 +3,7 @@ import 'package:chat_gpt/Feature/home/manager/home_states.dart';
 import 'package:chat_gpt/Feature/home/presentation/widgets/chat_deatils.dart';
 import 'package:chat_gpt/Feature/home/presentation/widgets/custom_app_bar.dart';
 import 'package:chat_gpt/Feature/home/presentation/widgets/list_item.dart';
+import 'package:chat_gpt/core/utils/colors.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,7 +16,8 @@ class HomePage extends StatelessWidget {
     return BlocConsumer<HomeCubit, HomeStates>(
       builder: (BuildContext context, state) {
         return Scaffold(
-          backgroundColor: const Color(0xff202123),
+          backgroundColor:
+              HomeCubit.get(context).islight ? Colors.white : kChatColor,
           body: Column(
             children: [
               const CustomAppBar(),
@@ -41,7 +43,9 @@ class HomePage extends StatelessWidget {
               Container(
                 width: double.infinity,
                 height: 1,
-                color: Colors.white.withOpacity(.4),
+                color: HomeCubit.get(context).islight
+                    ? Colors.black.withOpacity(.4)
+                    : Colors.white.withOpacity(.4),
               ),
               const ListItem()
             ],

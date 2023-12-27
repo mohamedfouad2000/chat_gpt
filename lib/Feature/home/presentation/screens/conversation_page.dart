@@ -1,6 +1,7 @@
 import 'package:chat_gpt/Feature/home/data/messageModel/message_model.dart';
 import 'package:chat_gpt/Feature/home/manager/home_cubit.dart';
 import 'package:chat_gpt/Feature/home/manager/home_states.dart';
+import 'package:chat_gpt/Feature/home/presentation/home_page.dart';
 import 'package:chat_gpt/Feature/home/presentation/widgets/custom_conversion_app_bar.dart';
 import 'package:chat_gpt/Feature/home/presentation/widgets/custom_send_buttom.dart';
 import 'package:chat_gpt/Feature/home/presentation/widgets/loading_text.dart';
@@ -8,6 +9,7 @@ import 'package:chat_gpt/Feature/home/presentation/widgets/message_reseve.dart';
 import 'package:chat_gpt/Feature/home/presentation/widgets/message_send.dart';
 import 'package:chat_gpt/Feature/home/presentation/widgets/option_list.dart';
 import 'package:chat_gpt/Feature/home/presentation/widgets/regenerate_item.dart';
+import 'package:chat_gpt/core/utils/components.dart';
 
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
@@ -15,9 +17,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 // ignore: must_be_immutable
 class ConversationPage extends StatelessWidget {
-  ConversationPage({super.key, this.editModel, this.indexOfModel});
+  ConversationPage({super.key, this.editModel, this.indexOfModel, this.text});
   List<MessageModel>? editModel;
   int? indexOfModel;
+  String? text;
   @override
   Widget build(BuildContext context) {
     TextEditingController msqCont = TextEditingController();
@@ -25,7 +28,19 @@ class ConversationPage extends StatelessWidget {
     if (editModel != null) {
       HomeCubit.get(context).putEditList(editModel: editModel!);
     }
-
+    if (text != null) {
+      msqCont.text = text!;
+      HomeCubit.get(context)
+          .addTochangeList(
+              text: text.toString(), id: 1, dateTime: DateTime.now().toString())
+          .then((value) {
+        HomeCubit.get(context)
+            .chatwithGpt(msq: msqCont.text.toString())
+            .then((value) {
+          msqCont.text = '';
+        });
+      });
+    }
     return BlocConsumer<HomeCubit, HomeStates>(
       builder: (BuildContext context, state) {
         // ignore: deprecated_member_use
@@ -35,7 +50,7 @@ class ConversationPage extends StatelessWidget {
               HomeCubit.get(context)
                   .addNewChat(index: indexOfModel)
                   .then((value) {
-                Navigator.pop(context, true);
+                Nav(context, const HomePage());
                 return true;
               });
             }
@@ -111,7 +126,9 @@ class ConversationPage extends StatelessWidget {
                               "Ask anything, get your answer",
                               style: TextStyle(
                                   fontSize: 16.0,
-                                  color: Colors.white.withOpacity(.4),
+                                  color: HomeCubit.get(context).islight
+                                      ? Colors.black.withOpacity(.4)
+                                      : Colors.white.withOpacity(.4),
                                   fontWeight: FontWeight.w600),
                             ),
                           );

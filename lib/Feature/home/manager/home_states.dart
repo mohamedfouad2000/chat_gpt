@@ -23,3 +23,5 @@ class AddTolistState extends HomeStates {}
 class SuccAddListState extends HomeStates {}
 
 class LoadingEditAddListState extends HomeStates {}
+
+class ChangeThemeState extends HomeStates {}

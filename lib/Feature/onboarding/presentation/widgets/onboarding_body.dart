@@ -172,26 +172,28 @@ class _BoardingBodyState extends State<BoardingBody> {
                 }
               },
               textWidget: islast
-                  ? const Row(
+                  ? Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
                           "Let’s Chat",
-                          style: StylesData.buttonText,
+                          style: StylesData.buttonText
+                              .copyWith(color: Colors.white),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
-                        Icon(
+                        const Icon(
                           Icons.arrow_forward,
                           color: Colors.white,
                           size: 18,
                         )
                       ],
                     )
-                  : const Text(
+                  : Text(
                       "Next",
-                      style: StylesData.buttonText,
+                      style:
+                          StylesData.buttonText.copyWith(color: Colors.white),
                     )),
         ],
       ),

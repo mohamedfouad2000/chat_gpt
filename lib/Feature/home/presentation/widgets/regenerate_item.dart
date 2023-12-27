@@ -53,7 +53,7 @@ class RegenerateItem extends StatelessWidget {
               ),
               Text(
                 "Regenerate response",
-                style: StylesData.regenerateStyle,
+                style: StylesData.regenerateStyle.copyWith(color: Colors.white),
               ),
             ],
           ),

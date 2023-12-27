@@ -1,3 +1,5 @@
+import 'package:chat_gpt/Feature/home/presentation/screens/conversation_page.dart';
+import 'package:chat_gpt/core/utils/components.dart';
 import 'package:chat_gpt/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 
@@ -7,7 +9,13 @@ class QuestionItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Nav(
+            context,
+            ConversationPage(
+              text: text,
+            ));
+      },
       child: Container(
         padding:
             const EdgeInsets.only(top: 12, bottom: 12, right: 24, left: 24),

@@ -43,6 +43,7 @@ Widget customTextFiled(
       ),
     );
 Widget customTextFormedFiled({
+  required cursorColor,
   required controller,
   TextInputType type = TextInputType.name,
   IconData? preicon,
@@ -63,7 +64,7 @@ Widget customTextFormedFiled({
           return null;
         }
       },
-      cursorColor: Colors.white,
+      cursorColor: cursorColor,
       decoration: const InputDecoration(
           hoverColor: Colors.white,
           border: InputBorder.none,
