@@ -12,7 +12,7 @@ class CustomQuestionAppbar extends StatelessWidget {
     return BlocConsumer<HomeCubit, HomeStates>(
       builder: (BuildContext context, state) {
         return Container(
-          padding: const EdgeInsets.only(top: 16, bottom: 16),
+          padding: const EdgeInsets.only(top: 20, bottom: 20),
           child: Column(
             children: [
               const Row(
@@ -24,8 +24,8 @@ class CustomQuestionAppbar extends StatelessWidget {
                     width: 16,
                   ),
                   Expanded(
-                      child:
-                          Text("Some Question", style: StylesData.titleStyle)),
+                      child: Text("Rondom Question",
+                          style: StylesData.titleStyle)),
                 ],
               ),
               const SizedBox(
