@@ -157,6 +157,9 @@ class ConversationPage extends StatelessWidget {
                   duration: const Duration(milliseconds: 300),
                   curve: Curves.easeIn));
         }
+        if (state is FailureGetResponState) {
+          HomeCubit.get(context).chatList.removeLast();
+        }
       },
     );
   }

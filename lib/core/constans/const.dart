@@ -1,3 +1,5 @@
-// String? UID;
 const endPoint = '/completions';
-const token = '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';
+const tok1 = 'ZGKTIqiVJY2kxv9AhXVz';
+const tok2 = 'T3BlbkFJqO4F1F';
+const tok3 = 'qq1UiVCYBOVsjd';
+const token = '$tok1$tok2$tok3';

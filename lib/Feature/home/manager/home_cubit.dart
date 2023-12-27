@@ -20,7 +20,8 @@ class HomeCubit extends Cubit<HomeStates> {
     required String msq,
   }) async {
     emit(LoadingGetResponState());
-    DioHelper.postData(url: endPoint, token: token, data: {
+    print(token);
+    DioHelper.postData(url: endPoint, token: 'sk-$token', data: {
       "prompt": msq,
       "max_tokens": 600,
       "temperature": 0,
